@@ -5,6 +5,7 @@
 import Entity.Movie;
 import Service.MovieService;
 import Service.RentService;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -69,12 +70,11 @@ public class Dia11_Ejeercicio1 {
          */
         MovieService ms1 = new MovieService();
         RentService rs1 = new RentService();
+        ArrayList<Movie> movieList = new ArrayList<Movie>();
 
         switch (option) {
             case 1:
-                Movie m = ms1.createMovie();
-                ms1.listMovies(ms1);
-                System.out.println(ms1);
+                movieList = ms1.createMovie(movieList);
                 return false;
 //            case 2:
 //                Rent[] rentList = new Rent[6];
@@ -84,10 +84,9 @@ public class Dia11_Ejeercicio1 {
 //                System.out.println("");
 //                rs1.listRents(menu);  
 //                return false;
-//            case 3:
-//                ms1.listMovies();
-//                System.out.println("");
-//                return false;
+            case 3:
+                ms1.listMovies(movieList);
+                return false;
 //            case 4:
 //                rs1.listRents();
 //                System.out.println("");
@@ -109,7 +108,8 @@ public class Dia11_Ejeercicio1 {
             default:
                 return false;
         }
-
+        
+                
     }
 }
 //        Movie m1 = ms1.createMovie("Avatar 2", "Sci-Fi", 2023, 180);

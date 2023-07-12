@@ -13,26 +13,16 @@ import java.util.Scanner;
  */
 public class MovieService {
     
-    private Scanner leer = new Scanner(System.in);
+    private Scanner leer = new Scanner(System.in);   
     
-    ArrayList<Movie> movieList;
-    
-    public MovieService() {
-        movieList = new ArrayList<Movie>();
-    }
-
-    public MovieService(ArrayList<Movie> movieList) {
-        this.movieList = movieList;
-    }
-        
-    public Movie createMovie(String title, String genre, int year, int duration) {
+    public Movie createMovie(String title, String genre, int year, int duration, ArrayList<Movie> movieList) {
         Movie m = new Movie(title, genre, year, duration);
         movieList.add(m);
         
         return m;
     }
     
-    public Movie createMovie() {
+    public ArrayList<Movie> createMovie(ArrayList<Movie> movieList) {
         /*
         * Recieves data and creates a Movie object.
         * return: Movie object. 
@@ -52,10 +42,12 @@ public class MovieService {
         m.setDuration(leer.nextInt()); 
         leer.nextLine();
                 
-        return m;
+        movieList.add(m);
+        
+        return movieList;
     }
     
-    public void listMovies(MovieService ms) {
+    public void listMovies(ArrayList<Movie> movieList) {
         for (int i = 0; i < movieList.size(); i++) {
             System.out.println(movieList.get(i));
         }
